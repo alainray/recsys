@@ -20,16 +20,16 @@ El pseudocódigo para el algoritmo sería:
 
 1. Inicializar matriz de similaridades S.
 2. Crear matriz de trabajo S' con los mismos valores de S.
-2. Recorrer cada elemento S'<sub>i,j</sub> del triángulo superior de S'.
+3. Recorrer cada elemento S'<sub>i,j</sub> del triángulo superior de S'.
    - Si S'<sub>i,j</sub> tiene Similaridad distinta de 0, pasar al siguiente elemento.
    - Si S'<sub>i,j</sub> tiene valor 0, entonces calcular nueva Similaridad para elemento S'<sub>i,j</sub> y asignársela al elemento S<sub>i,j</sub>.
-     - La fórmula para calcular la Similaridad es:
-     
-                     ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
-5. Hacer esto para cada elemento de S'.
-6. En caso de haberse realizado cambios en las similaridades en esta corrida,
+     - La fórmula para calcular la Similaridad es: 
+![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
+
+4. Hacer esto para cada elemento de S'.
+5. En caso de haberse realizado cambios en las similaridades en esta corrida,
    - Copiar valores de S en S'.
    - Volver a 3.
-7. Fin.
+6. Fin.
 
 A continuación, el link a una [implementación en Python del algoritmo propuesto](https://github.com/alainray/recsys/blob/master/semana1_similarity.py).
