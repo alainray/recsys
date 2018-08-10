@@ -3,7 +3,7 @@
 
 A continuación se listan los blogs asignados a la lectura semanal del curso.
 
-#### Semana 1:  How not to sort by Average Rating, [Evan Miller Blog](http://www.evanmiller.org/how-not-to-sort-by-average-rating.html)
+#### Semana 1:  Schafer, J. B., Frankowski, D., Herlocker, J., & Sen, S. (2007). Collaborative filtering recommender systems.
 
 La lectura trata sobre los métodos de Filtrado Colaborativo y describe e.
 
