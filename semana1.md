@@ -14,3 +14,11 @@ Sin embargo, este método adolece del problema que si un usuario no ha evaluado 
 Para mitigar este problema, propongo un método para predecir las similaridades desconocidas. Para esto simplemente asumiremos que las similaridades desconocidas son el equivalente a un item cuyo rating debe ser predecido y ocuparemos el mismo algoritmo de predicción de evaluaciones descrito en la lectura.
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
+
+El pseudocódigo para el algoritmo sería:
+```
+1. Obtener tabla de similaridades
+2. Recorrer cada elemento X<sub>i,j</sub> de la parte superior de la matriz.
+3. Si el elemento tiene Similaridad distinta de 0, pasar al siguiente elemento.
+4. Si el elemento tiene valor 0, entonces calcular nueva Similaridad
+```
