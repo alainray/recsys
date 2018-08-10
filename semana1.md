@@ -23,11 +23,12 @@ El pseudocódigo para el algoritmo sería:
 3. Recorrer cada elemento S'<sub>i,j</sub> del triángulo superior de S'.
    - Si S'<sub>i,j</sub> tiene Similaridad distinta de 0, pasar al siguiente elemento.
    - Si S'<sub>i,j</sub> tiene valor 0, entonces calcular nueva Similaridad para elemento S'<sub>i,j</sub> y asignársela al elemento S<sub>i,j</sub>.
-     - La fórmula para calcular la Similaridad es: 
+     - La fórmula para calcular la Similaridad es: <br>
 ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
+     - Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
 
 4. Hacer esto para cada elemento de S'.
-5. En caso de haberse realizado cambios en las similaridades en esta corrida,
+5. En caso de haberse realizado cambios en las similaridades en esta corrida:
    - Copiar valores de S en S'.
    - Volver a 3.
 6. Fin.
