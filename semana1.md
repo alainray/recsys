@@ -24,6 +24,7 @@ El pseudocódigo para el algoritmo sería:
    - Si S'<sub>i,j</sub> tiene Similaridad distinta de 0, pasar al siguiente elemento.
    - Si S'<sub>i,j</sub> tiene valor 0, entonces calcular nueva Similaridad para elemento S'<sub>i,j</sub> y asignársela al elemento S<sub>i,j</sub>.
      - La fórmula para calcular la Similaridad es:
+     
                      ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
 5. Hacer esto para cada elemento de S'.
 6. En caso de haberse realizado cambios en las similaridades en esta corrida,
