@@ -15,12 +15,16 @@ Para mitigar este problema, propongo un método para predecir las similaridades 
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
+
 El pseudocódigo para el algoritmo sería:
-```
-1. Obtener tabla de similaridades
-2. Recorrer cada elemento X<sub>i,j</sub> de la parte superior de la matriz.
-   - Si el elemento tiene Similaridad distinta de 0, pasar al siguiente elemento.
-   - Si el elemento tiene valor 0, entonces calcular nueva Similaridad para elemento Xi,j y asignarsela al elemento Xi,j.
-5. Hacer esto para cada elemento de la matriz i,j.
-6. En caso de haberse realizado cambios en las similaridades en esta corrida, volver a 1.
-```
+
+1. Inicializar matriz de similaridades S.
+2. Crear matriz de trabajo S' con los mismos valores de S.
+2. Recorrer cada elemento S'<sub>i,j</sub> del triángulo superior de S'.
+   - Si S'<sub>i,j</sub> tiene Similaridad distinta de 0, pasar al siguiente elemento.
+   - Si S'<sub>i,j</sub> tiene valor 0, entonces calcular nueva Similaridad para elemento S'<sub>i,j</sub> y asignársela al elemento S<sub>i,j</sub> .
+5. Hacer esto para cada elemento de S'.
+6. En caso de haberse realizado cambios en las similaridades en esta corrida,
+   - Copiar valores de S en S'.
+   - Volver a 3.
+7. Fin.
