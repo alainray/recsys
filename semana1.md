@@ -1,3 +1,6 @@
+## Sistemas de Recomendación - IIC3633 - Blog - Alain Raymond
+### 2do Semestre 2018
+
 #### Semana 1:  Schafer, J. B., Frankowski, D., Herlocker, J., & Sen, S. (2007). Collaborative filtering recommender systems.
 
 La lectura trata sobre los métodos de Filtrado Colaborativo y describe e.
