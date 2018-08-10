@@ -19,6 +19,8 @@ El pseudocódigo para el algoritmo sería:
 ```
 1. Obtener tabla de similaridades
 2. Recorrer cada elemento X<sub>i,j</sub> de la parte superior de la matriz.
-3. Si el elemento tiene Similaridad distinta de 0, pasar al siguiente elemento.
-4. Si el elemento tiene valor 0, entonces calcular nueva Similaridad
+   - Si el elemento tiene Similaridad distinta de 0, pasar al siguiente elemento.
+   - Si el elemento tiene valor 0, entonces calcular nueva Similaridad para elemento Xi,j y asignarsela al elemento Xi,j.
+5. Hacer esto para cada elemento de la matriz i,j.
+6. En caso de haberse realizado cambios en las similaridades en esta corrida, volver a 1.
 ```
