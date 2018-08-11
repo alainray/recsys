@@ -57,6 +57,7 @@ counter=1                           #Iteration Counter
 print("Starting Conditions:")
 print(similarity)
 
+#main loop starts
 while (anyChanges):
     print("Results after Iteration N°" + str(counter) + ":")
     anyChanges = False                                      #No changes so far
