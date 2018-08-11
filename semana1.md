@@ -13,7 +13,7 @@ Para esto, se utiliza una métrica de similaridad entre usuarios, que pondera lo
 Sin embargo, este método adolece del problema que si un usuario no ha evaluado items en común con usuarios que sí han evaluado el ítem a predecir, entonces no es posible generar la métrica de similaridad.
 
 ### Propuesta de solución
-Para mitigar este problema, propongo un método para predecir las similaridades desconocidas. Para esto simplemente asumiremos que las similaridades desconocidas son el equivalente a un item cuyo rating debe ser predecido y ocuparemos el mismo algoritmo de predicción de evaluaciones descrito en la lectura.
+Para mitigar este problema, se propone un método para predecir las similaridades desconocidas. Para esto simplemente se asume que las similaridades desconocidas son el equivalente a un item cuyo rating debe ser predecido y ocuparemos el mismo algoritmo de predicción de evaluaciones descrito en la lectura.
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
@@ -35,23 +35,7 @@ El pseudocódigo para el algoritmo sería:
    2. Volver a 3.
 5. Fin.
 
-#### Características
 
-* El algoritmo es independiente del método utilizado para calcular las similaridades.
-* El uso del valor 0 para representar los valores desconocidos es afortunado, pues permite hacer directamente el producto punto entre filas y columnas, al eliminar los términos asociados a la diagonal.
-
-##### Problemas
-* Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de tamaño grande puede ser prohibitivo. Aunque este problema ya se encuentra presente en el método original de UB-CF.
-  * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría recorrer la matriz una sola vez.
-* Se utiliza una copia de la matriz original para trabajar, lo que puede ser prohibitivo en dimensiones grandes.
-* Puede generar similaridades fuera del rango de [-1,1] cuando se trabaja con ponderadores tanto negativos y positivos.
-  * Tres posibles respuestas:
-    * No hacer nada.
-    * Forzar los valores a estar en el rango [-1,1].
-    * Considerar la similaridad como desconocida. _Opción utilizada en esta implementación_.
-  * Sin embargo, es altamente probable que los vecinos que ocupemos para calcular las similaridades sean aquellos con quienes tengamos correlación positiva.
-    * Por ahora, el algoritmo está implementado considerando todos los vecinos.
-  * En ese caso, el problema desaparece.
 ### Ejemplo de implementación
 1. Para la siguiente matriz de entrada S:
 
@@ -95,4 +79,24 @@ El pseudocódigo para el algoritmo sería:
  
 Podemos ver que hemos completado S con todas las similaridades desconocidas, extrapoladas a partir de las similaridades conocidas.
 
-A continuación, el link a una [implementación en Python del algoritmo propuesto](https://github.com/alainray/recsys/blob/master/semana1_similarity.py).
+A continuación, un link a una [implementación en Python del algoritmo propuesto](https://github.com/alainray/recsys/blob/master/semana1_similarity.py).
+
+#### Características
+
+* El algoritmo es independiente del método utilizado para calcular las similaridades.
+* El uso del valor 0 para representar los valores desconocidos es afortunado, pues permite hacer directamente el producto punto entre 
+filas y columnas, al eliminar los términos asociados a la diagonal.
+* El algoritmo no garantiza poblar completamente la matriz de similaridades. Sin embargo, sí garantiza que las secciones conexas del grafo de similaridades se conviertan en cliques.
+
+##### Problemas
+* Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de tamaño grande puede ser prohibitivo. Aunque este problema ya se encuentra presente en el método original de UB-CF.
+  * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría recorrer la matriz una sola vez.
+* Se utiliza una copia de la matriz original para trabajar, lo que puede ser prohibitivo en dimensiones grandes.
+* Puede generar similaridades fuera del rango de [-1,1] cuando se trabaja con ponderadores tanto negativos y positivos.
+  * Tres posibles respuestas:
+    * No hacer nada.
+    * Forzar los valores a estar en el rango [-1,1].
+    * Considerar la similaridad como desconocida. _Opción utilizada en esta implementación_.
+  * Sin embargo, es altamente probable que los vecinos que ocupemos para calcular las similaridades sean aquellos con quienes tengamos correlación positiva.
+    * Por ahora, el algoritmo está implementado considerando todos los vecinos.
+  * En ese caso, el problema desaparece.
