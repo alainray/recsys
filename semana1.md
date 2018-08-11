@@ -81,14 +81,14 @@ Podemos ver que hemos completado S con todas las similaridades desconocidas, ext
 
 A continuación, un link a una [implementación en Python del algoritmo propuesto](https://github.com/alainray/recsys/blob/master/semana1_similarity.py).
 
-#### Características
+### Características
 
 * El algoritmo es independiente del método utilizado para calcular las similaridades.
 * El uso del valor 0 para representar los valores desconocidos es afortunado, pues permite hacer directamente el producto punto entre 
 filas y columnas, al eliminar los términos asociados a la diagonal.
 * El algoritmo no garantiza poblar completamente la matriz de similaridades. Sin embargo, sí garantiza que las secciones conexas del grafo de similaridades se conviertan en cliques.
 
-##### Problemas
+#### Problemas
 * Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de tamaño grande puede ser prohibitivo. Aunque este problema ya se encuentra presente en el método original de UB-CF.
   * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría recorrer la matriz una sola vez.
 * Se utiliza una copia de la matriz original para trabajar, lo que puede ser prohibitivo en dimensiones grandes.
