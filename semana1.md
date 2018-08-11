@@ -34,7 +34,7 @@ La fórmula es parecida:
 * El denominador lo implementaremos como el producto punto entre la fila i y un vector A que indica si hay o no similaridad entre el usuario i y el usuario j.
 * Luego la fórmula implementada sería:
 
-![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
+![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana.PNG)
 * Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S.
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
