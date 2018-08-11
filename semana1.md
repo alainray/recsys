@@ -13,7 +13,9 @@ Para esto, se utiliza una métrica de similaridad entre usuarios, que pondera lo
 Sin embargo, este método adolece del problema que si un usuario no ha evaluado items en común con usuarios que sí han evaluado el ítem a predecir, entonces no es posible generar la métrica de similaridad.
 
 ### Propuesta de solución
-Para mitigar este problema, se propone un método para predecir las similaridades desconocidas. Para esto simplemente se asume que las similaridades desconocidas son el equivalente a un item cuyo rating debe ser predecido y ocuparemos el mismo algoritmo de predicción de evaluaciones descrito en la lectura.
+Para mitigar este problema, se propone un método para predecir las similaridades desconocidas. 
+
+Para esto utilizaremos el algoritmo de UB-CF base pero el item al que lo aplicaremos serán las similaridades desconocidas. Luego, la idea es predecir para un usuario U<sub>1</sub> que no posee una similaridad con otro usuario U<sub>2</sub>, basándose en las similaridades de los usuarios que sí conocen a U<sub>1</sub> y U<sub>2</sub>.
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
@@ -81,13 +83,18 @@ Podemos ver que hemos completado S con todas las similaridades desconocidas, ext
 
 A continuación, un link a una [implementación en Python del algoritmo propuesto](https://github.com/alainray/recsys/blob/master/semana1_similarity.py).
 
-### Características
+### Sobre el algoritmo
+#### Características
 
 * El algoritmo es independiente del método utilizado para calcular las similaridades.
 * El uso del valor 0 para representar los valores desconocidos es afortunado, pues permite hacer directamente el producto punto entre 
 filas y columnas, al eliminar los términos asociados a la diagonal.
 * El algoritmo no garantiza poblar completamente la matriz de similaridades. Sin embargo, sí garantiza que las secciones conexas del grafo de similaridades se conviertan en cliques.
 
+#### Supuestos
+
+* Se asume que es razonable estimar la similaridad entre un usuario U<sub>1</sub> y U<sub>2</sub> basándose en las similaridades de usuarios que poseen similaridad con ambos.
+   * De cierta manera, se asume que las similaridades son ratings de un usuario a otro en una escala de -1 a 1.
 #### Problemas
 * Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de tamaño grande puede ser prohibitivo. Aunque este problema ya se encuentra presente en el método original de UB-CF.
   * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría recorrer la matriz una sola vez.
