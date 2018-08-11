@@ -108,3 +108,7 @@ filas y columnas, al eliminar los términos asociados a la diagonal.
     * En ese caso, el problema desaparece.
     * Por ahora, el algoritmo está implementado considerando todos los vecinos.
  
+### Trabajo futuro
+* Implementar optimización de uso de espacio y recorrido de matrices.
+* Evaluar qué tan bien la medida de Similaridad calculada sirve para predecir ratings de items.
+* Evaluar cuánto se reduce el sparsity de la matriz de Similaridades en distintos casos.
