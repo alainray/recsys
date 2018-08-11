@@ -98,5 +98,6 @@ filas y columnas, al eliminar los términos asociados a la diagonal.
     * Forzar los valores a estar en el rango [-1,1].
     * Considerar la similaridad como desconocida. _Opción utilizada en esta implementación_.
   * Sin embargo, es altamente probable que los vecinos que ocupemos para calcular las similaridades sean aquellos con quienes tengamos correlación positiva.
+    * En ese caso, el problema desaparece.
     * Por ahora, el algoritmo está implementado considerando todos los vecinos.
-  * En ese caso, el problema desaparece.
+ 
