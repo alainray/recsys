@@ -28,8 +28,8 @@ El pseudocódigo para el algoritmo sería:
      - Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
      - Restamos 1 del denominador para eliminar el peso de la diagonal.
 4. Al finalizar, en caso de haberse realizado cambios en las similaridades en esta corrida:
-   - Copiar valores de S en S'.
-   - Volver a 3.
+   1. Copiar valores de S en S'.
+   2. Volver a 3.
 5. Fin.
 
 Por ejemplo, para la siguiente matriz de entrada S:
