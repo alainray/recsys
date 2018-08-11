@@ -31,7 +31,7 @@ La Similaridad entre usuarios se puede hacer con una métrica de distancia cuyo 
 ### Propuesta de solución
 Para mitigar este problema, se propone un método para predecir las similaridades desconocidas. Veamos un caso de ejemplo:
 
-* Si representamos las relaciones de similaridad existentes en una matriz de Similaridades como un grafo:
+* Si representamos las relaciones de similaridad existentes en una matriz de Similaridades S como un grafo:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph.PNG)
  
@@ -50,9 +50,9 @@ Para mitigar este problema, se propone un método para predecir las similaridade
   * Luego la fórmula implementada sería:
 
   ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
-  * Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de la matriz de Similaridades.
+  * Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S.
 
-  * Luego, recorremos la matriz buscando las similares desconocidas y calculándolas con la fórmula. Cuando terminamos de recorrerla, podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de Similaridades.
+  * Luego, recorremos S buscando las similares desconocidas y calculándolas con la fórmula. Cuando terminamos de recorrerla, podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de Similaridades.
 
 #### Pseudocódigo
 El pseudocódigo para el algoritmo sería:
