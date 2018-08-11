@@ -35,7 +35,7 @@ La fórmula es parecida:
 * Luego la fórmula implementada sería:
 
 ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
-* Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S.
+* Donde R<sub>i</sub> y C<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S.
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
