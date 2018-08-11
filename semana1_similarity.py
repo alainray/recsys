@@ -12,10 +12,12 @@ def calculateUnknownSimilarity(i,j):
     
     iRow=similarity_copy[i,:].copy()
     jColumn=similarity_copy[:,j].copy()
+    actualSimilarities=similarity_copy[:,j].copy()
 
     #Dot Product between both vectors normalized by the sum is the calculated 
     #Similarity
-    sumElements=(np.sum(iRow)-1)
+    actualSimilarities[actualSimilarities<>0]=1
+    sumElements=np.dot(iRow,actualSimilarities)
     if sumElements==0:
         return UNKNOWN
     calculatedSimilarity=np.dot(iRow,jColumn)/sumElements #WEIGHTED AVERAGE
@@ -42,8 +44,8 @@ def calculateUnknownSimilarity(i,j):
 float_formatter = lambda x: "%.3f" % x #Output formatting
 np.set_printoptions(formatter={'float_kind':float_formatter})                          
 similarity=np.matrix([[1,0.5,0,0,0,0.3],#Previously calculated Similarity Matrix
-                      [0.5,1,0.4,0.6,-0.3,-0.1],
-                      [0,0.4,1,-0.3,0,0.4],
+                      [0.5,1,0.4,0.6,0,-0.1],
+                      [0,0.4,1,0,0,0.4],
                       [0,0.6,0,1,0.2,0],
                       [0,0,0,0.2,1,0],
                       [0.3,-0.1,0.4,0,0,1]])
@@ -81,4 +83,3 @@ while (anyChanges):
     
 print("Processing Finished!")
 #Imprimimos resultado
-
