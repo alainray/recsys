@@ -12,7 +12,7 @@ Se hacen además ciertos ajustes para eliminar el sesgo de evaluación de cada u
 
 En fórmula, tenemos:
 
-![Fórmula UB-CF](https://github.com/alainray/recsys/blob/master/pred_rating_UB_CF.PNG)}
+![Fórmula UB-CF](https://github.com/alainray/recsys/blob/master/week1/pics/pred_rating_UB_CF.PNG)}
 
 La Similaridad entre usuarios se puede hacer con cualquier métrica de distancia. La métrica utilizada en la lectura es la Correlación de Pearson.
 
@@ -35,7 +35,7 @@ Para mitigar este problema, se propone un método para predecir las similaridade
 
 * Si representamos las relaciones de similaridad existentes en una matriz de Similaridades S como un grafo:
  
- ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph.PNG)
+ ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/week1/pics/similarity_graph.PNG)
  
 * Vemos que el usuario 5 sólo tiene conexiones de Similaridad con el usuario 4. Sin embargo, el usuario 4 tiene relación de Similaridad con el usuario 2 y éste con todo el resto. Usando el método estándar de UB-CF, no podríamos predecir el rating para el usuario 5 de ningún ítem que el usuario 2 hubiese evaluado.
 
@@ -43,14 +43,14 @@ Para mitigar este problema, se propone un método para predecir las similaridade
 
 * La fórmula es parecida:
 
-![Fórmula Pred Similaridad](https://github.com/alainray/recsys/blob/master/pred_similarity.PNG)
+![Fórmula Pred Similaridad](https://github.com/alainray/recsys/blob/master/week1/pics/pred_similarity.PNG)
 
   * N corresponde al conjunto de vecinos de U que tienen similaridad con U<sub>i</sub>.
   * Obviamos la resta y suma de los promedios pues este sesgo ya fue eliminado a la hora de calcular las Similaridades.
   * Descubrimos que el numerador es lo mismo que el producto punto entre la fila i y la columna j de S.
   * El denominador lo implementaremos como el producto punto entre la fila i y un vector A que indica si hay o no similaridad entre el usuario i y el usuario j.
   * Luego la fórmula implementada sería:
-  ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
+  ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/week1/pics/similarity_semana1.PNG)
   * Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S.
 
   * Luego, recorremos S buscando las similares desconocidas y calculándolas con la fórmula. Cuando terminamos de recorrerla, podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de Similaridades.
@@ -82,7 +82,7 @@ El pseudocódigo para el algoritmo sería:
 ```
 * La representación de grafos de S ya la vimos antes:
  
- ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph.PNG)
+ ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/week1/pics/similarity_graph.PNG)
 
 #### 2. Corremos el algoritmo. El estado de S después de 1 iteración es:
 ```
@@ -95,7 +95,7 @@ El pseudocódigo para el algoritmo sería:
 ```
  * El grafo de similaridad de S ahora sería:
  
- ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it1.PNG)
+ ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/week1/pics/similarity_graph_it1.PNG)
  
 #### 3. S después de 2 iteraciones:
 ```
@@ -108,7 +108,7 @@ El pseudocódigo para el algoritmo sería:
 ```
  * Finalmente, llegamos a la siguiente configuración:
  
- ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it2.PNG)
+ ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/week1/pics/similarity_graph_it2.PNG)
  
 Podemos ver que hemos completado S con todas las similaridades desconocidas, extrapoladas a partir de las similaridades conocidas.
 
