@@ -25,10 +25,16 @@ Para mitigar este problema, se propone un método para predecir las similaridade
 Para esto utilizaremos el algoritmo de UB-CF base pero el item al que lo aplicaremos serán las similaridades desconocidas. Luego, la idea es predecir para un usuario U<sub>1</sub> que no posee una similaridad con otro usuario U<sub>2</sub>, basándose en las similaridades de los usuarios que sí conocen a U<sub>1</sub> y U<sub>2</sub>.
 
 La fórmula es similar:
+
 ![Fórmula Pred Similaridad](https://github.com/alainray/recsys/blob/master/pred_similarity.PNG)
 
-Obviamos la resta y suma de los promedios pues este sesgo ya fue eliminado a la hora de calcular las Similaridades.
+* Obviamos la resta y suma de los promedios pues este sesgo ya fue eliminado a la hora de calcular las Similaridades.
+* Descubrimos que el numerador es lo mismo que el producto punto entre la fila i y la columna j de S.
+* El denominador lo implementaremos como el producto punto entre la fila i y un vector A que indica si hay o no similaridad entre el usuario i y el usuario j.
+* Luego la fórmula implementada sería:
 
+![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
+* Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
 #### Pseudocódigo
@@ -39,11 +45,6 @@ El pseudocódigo para el algoritmo sería:
 3. Recorrer cada elemento S'<sub>i,j</sub> del triángulo superior de S'.
    - Si S'<sub>i,j</sub> tiene Similaridad distinta de 0, pasar al siguiente elemento.
    - Si S'<sub>i,j</sub> tiene valor 0, entonces calcular nueva Similaridad para elemento S'<sub>i,j</sub> y asignársela al elemento S<sub>i,j</sub>.
-     - La fórmula para calcular la Similaridad es: <br>
-![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
-     - Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
-     - Utilizamos el producto punto pues representa exactamente la suma ponderada expresada en el algoritmo original.
-     - Restamos 1 del denominador para eliminar el peso de la diagonal.
 4. Al finalizar, en caso de haberse realizado cambios en las similaridades en esta corrida:
    1. Copiar valores de S en S'.
    2. Volver a 3.
