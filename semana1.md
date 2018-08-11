@@ -24,6 +24,11 @@ Para mitigar este problema, se propone un método para predecir las similaridade
 
 Para esto utilizaremos el algoritmo de UB-CF base pero el item al que lo aplicaremos serán las similaridades desconocidas. Luego, la idea es predecir para un usuario U<sub>1</sub> que no posee una similaridad con otro usuario U<sub>2</sub>, basándose en las similaridades de los usuarios que sí conocen a U<sub>1</sub> y U<sub>2</sub>.
 
+La fórmula es similar:
+![Fórmula Pred Similaridad](https://github.com/alainray/recsys/blob/master/pred_similarity.PNG)
+
+Obviamos la resta y suma de los promedios pues este sesgo ya fue eliminado a la hora de calcular las Similaridades.
+
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
 #### Pseudocódigo
@@ -50,9 +55,9 @@ El pseudocódigo para el algoritmo sería:
 
 ```
  [1.000 0.500 0.000 0.000 0.000 0.300]
- [0.500 1.000 0.400 0.600 -0.300 -0.100]
- [0.000 0.400 1.000 -0.300 0.000 0.400]
- [0.000 0.600 -0.300 1.000 0.200 0.000]
+ [0.500 1.000 0.400 0.600 0.000 -0.100]
+ [0.000 0.400 1.000 0.000 0.000 0.400]
+ [0.000 0.600 0.000 1.000 0.200 0.000]
  [0.000 0.000 0.000 0.200 1.000 0.000]
  [0.300 -0.100 0.400 0.000 0.000 1.000]
 ```
@@ -64,10 +69,10 @@ El pseudocódigo para el algoritmo sería:
 ```
  [1.000 0.500 0.400 0.500 0.000 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
- [0.400 0.400 1.000 -0.300 -0.300 0.400]
- [0.500 0.600 -0.300 1.000 0.200 -0.600]
- [0.000 0.600 -0.300 0.200 1.000 -0.300]
- [0.300 -0.100 0.400 -0.600 -0.300 1.000]
+ [0.400 0.400 1.000 0.400 0.000 0.400]
+ [0.500 0.600 0.400 1.000 0.200 0.600]
+ [0.000 0.600 0.000 0.200 1.000 0.000]
+ [0.300 -0.100 0.400 0.600 0.000 1.000]
 ```
  * El grafo de similaridad de S ahora sería:
  
@@ -75,12 +80,12 @@ El pseudocódigo para el algoritmo sería:
  
 #### 3. S después de 2 iteraciones:
 ```
-[1.000 0.500 0.400 0.500 0.950 0.300]
+ [1.000 0.500 0.400 0.500 0.500 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
- [0.400 0.400 1.000 -0.300 -0.300 0.400]
- [0.500 0.600 -0.300 1.000 0.200 -0.600]
- [0.950 0.600 -0.300 0.200 1.000 -0.300]
- [0.300 -0.100 0.400 -0.600 -0.300 1.000]
+ [0.400 0.400 1.000 0.400 0.400 0.400]
+ [0.500 0.600 0.400 1.000 0.200 0.600]
+ [0.500 0.600 0.400 0.200 1.000 0.120]
+ [0.300 -0.100 0.400 0.600 0.120 1.000]
 ```
  * Finalmente, llegamos a la siguiente configuración:
  
