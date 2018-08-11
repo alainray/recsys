@@ -35,6 +35,16 @@ El pseudocódigo para el algoritmo sería:
    2. Volver a 3.
 5. Fin.
 
+#### Características
+
+* El algoritmo es independiente del método utilizado para calcular las similaridades.
+* Puede generar similaridades fuera del rango de [-1,1] cuando se trabaja con ponderadores tanto negativos y positivos.
+  * Tres posibles respuestas:
+    * No hacer nada.
+    * Forzar los valores a estar en el rango [-1,1].
+    * Considerar la similaridad como desconocida. _Opción utilizada en esta implementación_.
+  * Sin embargo, es altamente probable que los vecinos que ocupemos para calcular las similaridades sean aquellos con quienes tengamos correlación positiva.
+  * En ese caso, el problema desaparece.
 ### Ejemplo de implementación
 1. Para la siguiente matriz de entrada S:
 
