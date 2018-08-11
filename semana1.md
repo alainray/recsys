@@ -69,7 +69,7 @@ El pseudocódigo para el algoritmo sería:
  [0.459 0.600 0.376 0.200 1.000 0.050]
  [0.300 -0.100 0.400 -0.300 0.050 1.000]]
 ```
- * El grafo de similaridad de S ahora sería:
+ * Finalmente, llegamos a la siguiente configuración:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it2.PNG)
  
