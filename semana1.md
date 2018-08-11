@@ -27,12 +27,10 @@ El pseudocódigo para el algoritmo sería:
 ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
      - Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
      - Restamos 1 del denominador para eliminar el peso de la diagonal.
-
-4. Hacer esto para cada elemento de S'.
-5. En caso de haberse realizado cambios en las similaridades en esta corrida:
+4. Al finalizar, en caso de haberse realizado cambios en las similaridades en esta corrida:
    - Copiar valores de S en S'.
    - Volver a 3.
-6. Fin.
+5. Fin.
 
 Por ejemplo, para la siguiente matriz de entrada S:
 
