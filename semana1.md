@@ -32,7 +32,8 @@ El pseudocódigo para el algoritmo sería:
    2. Volver a 3.
 5. Fin.
 
-Por ejemplo, para la siguiente matriz de entrada S:
+##Ejemplo de implementación
+1. Para la siguiente matriz de entrada S:
 
 ```
  [1.000 0.500 0.000 0.000 0.000 0.300]
@@ -43,12 +44,10 @@ Por ejemplo, para la siguiente matriz de entrada S:
  [0.300 -0.100 0.400 0.000 0.000 1.000]
 ```
 Cuyo grafo de similaridades sería:
-
-El grafo de similaridad de S ahora sería:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph.PNG)
 
-S después de 1 iteración:
+2. S después de 1 iteración:
 ```
  [1.000 0.500 0.640 0.375 0.000 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
@@ -61,7 +60,7 @@ S después de 1 iteración:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it1.PNG)
  
-S después de 2 iteraciones:
+3. S después de 2 iteraciones:
 ```
 [[1.000 0.500 0.640 0.375 0.459 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
