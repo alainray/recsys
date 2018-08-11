@@ -43,11 +43,11 @@ El pseudocódigo para el algoritmo sería:
  [0.000 0.000 0.000 0.200 1.000 0.000]
  [0.300 -0.100 0.400 0.000 0.000 1.000]
 ```
-Cuyo grafo de similaridades sería:
+* Si representamos las relaciones de similaridad existentes en esta matriz como un grafo, el resultado sería:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph.PNG)
 
-2. S después de 1 iteración:
+2. Corremos el algoritmo. El estado de S después de 1 iteración es:
 ```
  [1.000 0.500 0.640 0.375 0.000 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
@@ -56,7 +56,7 @@ Cuyo grafo de similaridades sería:
  [0.000 0.600 0.000 0.200 1.000 0.050]
  [0.300 -0.100 0.400 -0.300 0.050 1.000]
 ```
- El grafo de similaridad de S ahora sería:
+ * El grafo de similaridad de S ahora sería:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it1.PNG)
  
@@ -69,7 +69,7 @@ Cuyo grafo de similaridades sería:
  [0.459 0.600 0.376 0.200 1.000 0.050]
  [0.300 -0.100 0.400 -0.300 0.050 1.000]]
 ```
- El grafo de similaridad de S ahora sería:
+ * El grafo de similaridad de S ahora sería:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it2.PNG)
  
