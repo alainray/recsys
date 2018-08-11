@@ -3,6 +3,7 @@
 
 #### Semana 1:  Schafer, J. B., Frankowski, D., Herlocker, J., & Sen, S. (2007). Collaborative filtering recommender systems.
 
+### Discusión
 La lectura trata sobre los métodos de Filtrado Colaborativo y describe e.
 
 En particular, se discute el uso de un algoritmo basado en los ratings de usuarios para predecir el rating de un cierto item para un cierto usuario.
@@ -11,11 +12,12 @@ Para esto, se utiliza una métrica de similaridad entre usuarios, que pondera lo
 
 Sin embargo, este método adolece del problema que si un usuario no ha evaluado items en común con usuarios que sí han evaluado el ítem a predecir, entonces no es posible generar la métrica de similaridad.
 
+### Propuesta de solución
 Para mitigar este problema, propongo un método para predecir las similaridades desconocidas. Para esto simplemente asumiremos que las similaridades desconocidas son el equivalente a un item cuyo rating debe ser predecido y ocuparemos el mismo algoritmo de predicción de evaluaciones descrito en la lectura.
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
-
+#### Pseudocódigo
 El pseudocódigo para el algoritmo sería:
 
 1. Inicializar matriz de similaridades S.
@@ -26,13 +28,32 @@ El pseudocódigo para el algoritmo sería:
      - La fórmula para calcular la Similaridad es: <br>
 ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
      - Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
+     - Utilizamos el producto punto pues representa exactamente la suma ponderada expresada en el algoritmo original.
      - Restamos 1 del denominador para eliminar el peso de la diagonal.
 4. Al finalizar, en caso de haberse realizado cambios en las similaridades en esta corrida:
    1. Copiar valores de S en S'.
    2. Volver a 3.
 5. Fin.
 
-Por ejemplo, para la siguiente matriz de entrada S:
+#### Características
+
+* El algoritmo es independiente del método utilizado para calcular las similaridades.
+* El uso del valor 0 para representar los valores desconocidos es afortunado, pues permite hacer directamente el producto punto entre filas y columnas, al eliminar los términos asociados a la diagonal.
+
+##### Problemas
+* Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de tamaño grande puede ser prohibitivo. Aunque este problema ya se encuentra presente en el método original de UB-CF.
+  * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría recorrer la matriz una sola vez.
+* Se utiliza una copia de la matriz original para trabajar, lo que puede ser prohibitivo en dimensiones grandes.
+* Puede generar similaridades fuera del rango de [-1,1] cuando se trabaja con ponderadores tanto negativos y positivos.
+  * Tres posibles respuestas:
+    * No hacer nada.
+    * Forzar los valores a estar en el rango [-1,1].
+    * Considerar la similaridad como desconocida. _Opción utilizada en esta implementación_.
+  * Sin embargo, es altamente probable que los vecinos que ocupemos para calcular las similaridades sean aquellos con quienes tengamos correlación positiva.
+    * Por ahora, el algoritmo está implementado considerando todos los vecinos.
+  * En ese caso, el problema desaparece.
+### Ejemplo de implementación
+1. Para la siguiente matriz de entrada S:
 
 ```
  [1.000 0.500 0.000 0.000 0.000 0.300]
@@ -42,13 +63,11 @@ Por ejemplo, para la siguiente matriz de entrada S:
  [0.000 0.000 0.000 0.200 1.000 0.000]
  [0.300 -0.100 0.400 0.000 0.000 1.000]
 ```
-Cuyo grafo de similaridades sería:
-
-El grafo de similaridad de S ahora sería:
+* Si representamos las relaciones de similaridad existentes en esta matriz como un grafo, el resultado sería:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph.PNG)
 
-S después de 1 iteración:
+2. Corremos el algoritmo. El estado de S después de 1 iteración es:
 ```
  [1.000 0.500 0.640 0.375 0.000 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
@@ -57,11 +76,11 @@ S después de 1 iteración:
  [0.000 0.600 0.000 0.200 1.000 0.050]
  [0.300 -0.100 0.400 -0.300 0.050 1.000]
 ```
- El grafo de similaridad de S ahora sería:
+ * El grafo de similaridad de S ahora sería:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it1.PNG)
  
-S después de 2 iteraciones:
+3. S después de 2 iteraciones:
 ```
 [[1.000 0.500 0.640 0.375 0.459 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
@@ -70,7 +89,7 @@ S después de 2 iteraciones:
  [0.459 0.600 0.376 0.200 1.000 0.050]
  [0.300 -0.100 0.400 -0.300 0.050 1.000]]
 ```
- El grafo de similaridad de S ahora sería:
+ * Finalmente, llegamos a la siguiente configuración:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it2.PNG)
  
