@@ -42,6 +42,12 @@ Por ejemplo, para la siguiente matriz de entrada S:
  [0.000 0.000 0.000 0.200 1.000 0.000]
  [0.300 -0.100 0.400 0.000 0.000 1.000]
 ```
+Cuyo grafo de similaridades sería:
+
+El grafo de similaridad de S ahora sería:
+ 
+ ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph.PNG)
+
 S después de 1 iteración:
 ```
  [1.000 0.500 0.640 0.375 0.000 0.300]
@@ -51,6 +57,10 @@ S después de 1 iteración:
  [0.000 0.600 0.000 0.200 1.000 0.050]
  [0.300 -0.100 0.400 -0.300 0.050 1.000]
 ```
+ El grafo de similaridad de S ahora sería:
+ 
+ ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it1.PNG)
+ 
 S después de 2 iteraciones:
 ```
 [[1.000 0.500 0.640 0.375 0.459 0.300]
@@ -60,7 +70,10 @@ S después de 2 iteraciones:
  [0.459 0.600 0.376 0.200 1.000 0.050]
  [0.300 -0.100 0.400 -0.300 0.050 1.000]]
 ```
-
+ El grafo de similaridad de S ahora sería:
+ 
+ ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/similarity_graph_it2.PNG)
+ 
 Podemos ver que hemos completado S con todas las similaridades desconocidas, extrapoladas a partir de las similaridades conocidas.
 
 A continuación, el link a una [implementación en Python del algoritmo propuesto](https://github.com/alainray/recsys/blob/master/semana1_similarity.py).
