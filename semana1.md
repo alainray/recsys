@@ -12,14 +12,22 @@ Se hacen además ciertos ajustes para eliminar el sesgo de evaluación de cada u
 
 En fórmula, tenemos:
 
-![Fórmula UB-CF]()
+![Fórmula UB-CF](https://github.com/alainray/recsys/blob/master/pred_rating_UB_CF.PNG)
 
-Sin embargo, este método adolece del problema que si un usuario no ha evaluado items en común con usuarios que sí han evaluado el ítem a predecir, entonces no es posible generar la métrica de similaridad.
+#### Problemas
 
+* El problema del nuevo ítem: ¿qué sucede si hay un nuevo ítem que nadie ha evaluado? El algoritmo no puede dar una predicción para este caso.
+* Aún teniendo evaluaciones de ítems, si el usuario no puede calcular su _Similaridad_ con usuarios que sí lo han evaluado, entonces la predicción es imposible. 
+  * _En resolver este problema dedicaremos el resto de esta entrada_.
 ### Propuesta de solución
 Para mitigar este problema, se propone un método para predecir las similaridades desconocidas. 
 
 Para esto utilizaremos el algoritmo de UB-CF base pero el item al que lo aplicaremos serán las similaridades desconocidas. Luego, la idea es predecir para un usuario U<sub>1</sub> que no posee una similaridad con otro usuario U<sub>2</sub>, basándose en las similaridades de los usuarios que sí conocen a U<sub>1</sub> y U<sub>2</sub>.
+
+La fórmula es similar:
+![Fórmula Pred Similaridad](https://github.com/alainray/recsys/blob/master/pred_similarity.PNG)
+
+Obviamos la resta y suma de los promedios pues este sesgo ya fue eliminado a la hora de calcular las Similaridades.
 
 A medida que vamos obteniendo nuevas similaridades podemos volver a correr el algoritmo hasta que ya no hayan más similaridades desconocidas o no haya cambios en la matriz de similaridades.
 
@@ -47,8 +55,8 @@ El pseudocódigo para el algoritmo sería:
 
 ```
  [1.000 0.500 0.000 0.000 0.000 0.300]
- [0.500 1.000 0.400 0.600 -0.300 -0.100]
- [0.000 0.400 1.000 -0.300 0.000 0.400]
+ [0.500 1.000 0.400 0.600 0.000 -0.100]
+ [0.000 0.400 1.000 0.000 0.000 0.400]
  [0.000 0.600 0.000 1.000 0.200 0.000]
  [0.000 0.000 0.000 0.200 1.000 0.000]
  [0.300 -0.100 0.400 0.000 0.000 1.000]
@@ -59,12 +67,12 @@ El pseudocódigo para el algoritmo sería:
 
 #### 2. Corremos el algoritmo. El estado de S después de 1 iteración es:
 ```
- [1.000 0.500 0.640 0.375 0.000 0.300]
+ [1.000 0.500 0.400 0.500 0.000 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
- [0.640 0.400 1.000 0.300 0.000 0.400]
- [0.375 0.600 0.300 1.000 0.200 -0.300]
- [0.000 0.600 0.000 0.200 1.000 0.050]
- [0.300 -0.100 0.400 -0.300 0.050 1.000]
+ [0.400 0.400 1.000 0.400 0.000 0.400]
+ [0.500 0.600 0.400 1.000 0.200 0.600]
+ [0.000 0.600 0.000 0.200 1.000 0.000]
+ [0.300 -0.100 0.400 0.600 0.000 1.000]
 ```
  * El grafo de similaridad de S ahora sería:
  
@@ -72,12 +80,12 @@ El pseudocódigo para el algoritmo sería:
  
 #### 3. S después de 2 iteraciones:
 ```
-[[1.000 0.500 0.640 0.375 0.459 0.300]
+ [1.000 0.500 0.400 0.500 0.500 0.300]
  [0.500 1.000 0.400 0.600 0.600 -0.100]
- [0.640 0.400 1.000 0.300 0.376 0.400]
- [0.375 0.600 0.300 1.000 0.200 -0.300]
- [0.459 0.600 0.376 0.200 1.000 0.050]
- [0.300 -0.100 0.400 -0.300 0.050 1.000]]
+ [0.400 0.400 1.000 0.400 0.400 0.400]
+ [0.500 0.600 0.400 1.000 0.200 0.600]
+ [0.500 0.600 0.400 0.200 1.000 0.120]
+ [0.300 -0.100 0.400 0.600 0.120 1.000]
 ```
  * Finalmente, llegamos a la siguiente configuración:
  
