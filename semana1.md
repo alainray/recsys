@@ -14,6 +14,8 @@ En fórmula, tenemos:
 
 ![Fórmula UB-CF](https://github.com/alainray/recsys/blob/master/pred_rating_UB_CF.PNG)
 
+Para estimar la Similaridad entre usuarios, se puede usar una métrica de distancia que caiga en el rango [-1,1]. En la lectura se implementa con la correlación de Pearson.
+
 #### Problemas
 
 * El problema del nuevo ítem: ¿qué sucede si hay un nuevo ítem que nadie ha evaluado? El algoritmo no puede dar una predicción para este caso.
