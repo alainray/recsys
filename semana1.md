@@ -23,13 +23,45 @@ El pseudocódigo para el algoritmo sería:
 3. Recorrer cada elemento S'<sub>i,j</sub> del triángulo superior de S'.
    - Si S'<sub>i,j</sub> tiene Similaridad distinta de 0, pasar al siguiente elemento.
    - Si S'<sub>i,j</sub> tiene valor 0, entonces calcular nueva Similaridad para elemento S'<sub>i,j</sub> y asignársela al elemento S<sub>i,j</sub>.
-     - La fórmula para calcular la Similaridad es: 
+     - La fórmula para calcular la Similaridad es: <br>
 ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
+     - Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
 
 4. Hacer esto para cada elemento de S'.
-5. En caso de haberse realizado cambios en las similaridades en esta corrida,
+5. En caso de haberse realizado cambios en las similaridades en esta corrida:
    - Copiar valores de S en S'.
    - Volver a 3.
 6. Fin.
+
+Por ejemplo, para la siguiente matriz de entrada S:
+
+```
+ [1.000 0.500 0.000 0.000 0.000 0.300]
+ [0.500 1.000 0.400 0.600 -0.300 -0.100]
+ [0.000 0.400 1.000 -0.300 0.000 0.400]
+ [0.000 0.600 0.000 1.000 0.200 0.000]
+ [0.000 0.000 0.000 0.200 1.000 0.000]
+ [0.300 -0.100 0.400 0.000 0.000 1.000]
+```
+S después de 1 iteración:
+```
+ [1.000 0.500 0.640 0.375 0.000 0.300]
+ [0.500 1.000 0.400 0.600 0.600 -0.100]
+ [0.640 0.400 1.000 0.300 0.000 0.400]
+ [0.375 0.600 0.300 1.000 0.200 -0.300]
+ [0.000 0.600 0.000 0.200 1.000 0.050]
+ [0.300 -0.100 0.400 -0.300 0.050 1.000]
+```
+S después de 2 iteraciones:
+```
+[[1.000 0.500 0.640 0.375 0.459 0.300]
+ [0.500 1.000 0.400 0.600 0.600 -0.100]
+ [0.640 0.400 1.000 0.300 0.376 0.400]
+ [0.375 0.600 0.300 1.000 0.200 -0.300]
+ [0.459 0.600 0.376 0.200 1.000 0.050]
+ [0.300 -0.100 0.400 -0.300 0.050 1.000]]
+```
+
+Podemos ver que hemos completado S con todas las similaridades desconocidas, extrapoladas a partir de las similaridades conocidas.
 
 A continuación, el link a una [implementación en Python del algoritmo propuesto](https://github.com/alainray/recsys/blob/master/semana1_similarity.py).
