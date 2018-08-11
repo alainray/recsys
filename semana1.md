@@ -4,11 +4,15 @@
 #### Semana 1:  Schafer, J. B., Frankowski, D., Herlocker, J., & Sen, S. (2007). Collaborative filtering recommender systems.
 
 ### Discusión
-La lectura trata sobre los métodos de Filtrado Colaborativo y describe e.
+La lectura trata sobre los métodos de Filtrado Colaborativo y describe su historia, usos, métodos y consideraciones de diseño a la hora de implementar estos algoritmos.
 
-En particular, se discute el uso de un algoritmo basado en los ratings de usuarios para predecir el rating de un cierto item para un cierto usuario.
+En particular, dentro de los métodos de Filtrado Colaborativo, se describe paso a paso la creación de un método de Filtrado Colaborativo basado en el Usuario (_User Based Collaborative Filtering, UB-CF_). La premisa del algoritmo es simple: el problema es obtener un rating estimado para un usuario U que nunca ha evaluado un ítem en particular. Podemos ponderar los ratings de aquellos usuarios que sí han evaluado el ítem y ponderarlos por la _Similaridad_ de U con dicho usuario, luego se normaliza por la suma de las Similaridades y se obtiene el rating.
 
-Para esto, se utiliza una métrica de similaridad entre usuarios, que pondera los ratings de los usuarios que sí han evaluado el ítem y con eso se logra la predicción.
+Se hacen además ciertos ajustes para eliminar el sesgo de evaluación de cada usuario y para incorporar el sesgo del usuario U, restando y sumando la media de sus evaluaciones, respectivamente.
+
+En fórmula, tenemos:
+
+![Fórmula UB-CF]()
 
 Sin embargo, este método adolece del problema que si un usuario no ha evaluado items en común con usuarios que sí han evaluado el ítem a predecir, entonces no es posible generar la métrica de similaridad.
 
