@@ -27,7 +27,7 @@ La Similaridad entre usuarios se puede hacer con cualquier métrica de distancia
 * El problema del nuevo ítem: ¿qué sucede si hay un nuevo ítem que nadie ha evaluado? El algoritmo no puede dar una predicción para este caso.
 * El algoritmo es intensivo computacionalmente.
 * Es posible que la predicción diverja si las similaridades son positivas y negativas.
-* Aún teniendo evaluaciones de ítems, si el usuario no puede calcular su _Similaridad_ con usuarios que sí lo han evaluado, entonces la predicción es imposible. 
+* Aún teniendo evaluaciones de ítems, si el usuario no puede calcular su _Similaridad_ con usuarios que sí lo han evaluado, entonces la predicción de la evaluación de ese ítem es imposible. 
   * _En resolver este problema dedicaremos el resto de esta entrada_.
   
 ### Propuesta de solución
