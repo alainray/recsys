@@ -32,7 +32,7 @@ El pseudocódigo para el algoritmo sería:
    2. Volver a 3.
 5. Fin.
 
-##Ejemplo de implementación
+### Ejemplo de implementación
 1. Para la siguiente matriz de entrada S:
 
 ```
