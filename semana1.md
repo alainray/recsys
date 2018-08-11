@@ -38,12 +38,17 @@ El pseudocódigo para el algoritmo sería:
 #### Características
 
 * El algoritmo es independiente del método utilizado para calcular las similaridades.
+
+##### Problemas
+* Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de 
+  * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría tener que recorrer la matriz una sola vez.
 * Puede generar similaridades fuera del rango de [-1,1] cuando se trabaja con ponderadores tanto negativos y positivos.
   * Tres posibles respuestas:
     * No hacer nada.
     * Forzar los valores a estar en el rango [-1,1].
     * Considerar la similaridad como desconocida. _Opción utilizada en esta implementación_.
   * Sin embargo, es altamente probable que los vecinos que ocupemos para calcular las similaridades sean aquellos con quienes tengamos correlación positiva.
+    * Por ahora, el algoritmo está implementado considerando todos los vecinos.
   * En ese caso, el problema desaparece.
 ### Ejemplo de implementación
 1. Para la siguiente matriz de entrada S:
