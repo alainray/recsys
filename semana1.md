@@ -3,7 +3,6 @@
 
 #### Semana 1:  Schafer, J. B., Frankowski, D., Herlocker, J., & Sen, S. (2007). Collaborative filtering recommender systems.
 
-
 ### Discusión
 La lectura trata sobre los métodos de Filtrado Colaborativo y describe e.
 
@@ -29,6 +28,7 @@ El pseudocódigo para el algoritmo sería:
      - La fórmula para calcular la Similaridad es: <br>
 ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
      - Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S'.
+     - Utilizamos el producto punto pues representa exactamente la suma ponderada expresada en el algoritmo original.
      - Restamos 1 del denominador para eliminar el peso de la diagonal.
 4. Al finalizar, en caso de haberse realizado cambios en las similaridades en esta corrida:
    1. Copiar valores de S en S'.
@@ -38,10 +38,12 @@ El pseudocódigo para el algoritmo sería:
 #### Características
 
 * El algoritmo es independiente del método utilizado para calcular las similaridades.
+* El uso del valor 0 para representar los valores desconocidos es afortunado, pues permite hacer directamente el producto punto entre filas y columnas, al eliminar los términos asociados a la diagonal.
 
 ##### Problemas
-* Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de 
-  * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría tener que recorrer la matriz una sola vez.
+* Debe recorrer la mitad de la matriz por cada iteración, lo que para las matrices de tamaño grande puede ser prohibitivo. Aunque este problema ya se encuentra presente en el método original de UB-CF.
+  * Se puede arreglar para que guarde en memoria un arreglo con las posiciones que requieren cálculo. Esto permitiría recorrer la matriz una sola vez.
+* Se utiliza una copia de la matriz original para trabajar, lo que puede ser prohibitivo en dimensiones grandes.
 * Puede generar similaridades fuera del rango de [-1,1] cuando se trabaja con ponderadores tanto negativos y positivos.
   * Tres posibles respuestas:
     * No hacer nada.
