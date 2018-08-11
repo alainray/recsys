@@ -14,19 +14,19 @@ En fórmula, tenemos:
 
 ![Fórmula UB-CF](https://github.com/alainray/recsys/blob/master/pred_rating_UB_CF.PNG)}
 
-La Similaridad entre usuarios se puede hacer con una métrica de distancia cuyo dominio sea [-1,1]. La métrica utilizada en la lectura es la Correlación de Pearson.
+La Similaridad entre usuarios se puede hacer con cualquier métrica de distancia. La métrica utilizada en la lectura es la Correlación de Pearson.
 
 #### Ventajas
 
 * Fácil de implementar.
-
-Para estimar la Similaridad entre usuarios, se puede usar una métrica de distancia que caiga en el rango [-1,1]. En la lectura se implementa con la correlación de Pearson.
+* No depende de ningún atributo del ítem para calcularse. Solamente las evaluaciones del usuario. Esto lo hace muy generalizable.
 
 #### Problemas
 
 * El problema del usuario nuevo: ¿qué predicciones puedo hacer para un usuario que no ha hecho evaluaciones?
 * El problema del nuevo ítem: ¿qué sucede si hay un nuevo ítem que nadie ha evaluado? El algoritmo no puede dar una predicción para este caso.
 * El algoritmo es intensivo computacionalmente.
+* Es posible que la predicción diverja si las similaridades son positivas y negativas.
 * Aún teniendo evaluaciones de ítems, si el usuario no puede calcular su _Similaridad_ con usuarios que sí lo han evaluado, entonces la predicción es imposible. 
   * _En resolver este problema dedicaremos el resto de esta entrada_.
   
