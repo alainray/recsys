@@ -48,7 +48,6 @@ Para mitigar este problema, se propone un método para predecir las similaridade
   * Descubrimos que el numerador es lo mismo que el producto punto entre la fila i y la columna j de S.
   * El denominador lo implementaremos como el producto punto entre la fila i y un vector A que indica si hay o no similaridad entre el usuario i y el usuario j.
   * Luego la fórmula implementada sería:
-
   ![Fórmula Similaridad](https://github.com/alainray/recsys/blob/master/similarity_semana1.PNG)
   * Donde R'<sub>i</sub> y C'<sub>j</sub> son la i-ésima fila y j-ésima columna respectivamente de S.
 
