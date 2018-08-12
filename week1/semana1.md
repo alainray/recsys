@@ -12,7 +12,7 @@ Se hacen además ciertos ajustes para eliminar el sesgo de evaluación de cada u
 
 En fórmula, tenemos:
 
-![Fórmula UB-CF](https://github.com/alainray/recsys/blob/master/week1/pics/pred_rating_UB_CF.PNG)}
+![Fórmula UB-CF](https://github.com/alainray/recsys/blob/master/week1/pics/pred_rating_UB_CF.PNG)
 
 La Similaridad entre usuarios se puede hacer con cualquier métrica de distancia. La métrica utilizada en la lectura es la Correlación de Pearson.
 
