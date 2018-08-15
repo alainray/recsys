@@ -33,7 +33,24 @@ La Similaridad entre usuarios se puede hacer con cualquier métrica de distancia
 ### Propuesta de solución
 Para mitigar este problema, se propone un método para predecir las similaridades desconocidas. Veamos un caso de ejemplo:
 
-* Si representamos las relaciones de similaridad existentes en una matriz de Similaridades S como un grafo:
+* Imaginemos que poseemos un artefacto que llamaremos una matriz de Similaridad S que posee las siguientes propiedades:
+  1. La celda i,j de la matriz corresponde a la Similaridad entre el usuario i y el usuario j.
+  2. Por lo tanto, es simétrica.
+  3. Cuando no hay similaridad calculada entre usuario i y j, se define como valor 0.
+  4. La diagonal está poblada de 1s.
+  
+  Luego, una matriz S se podría ver así:
+  
+```
+ [1.000 0.500 0.000 0.000 0.000 0.300]
+ [0.500 1.000 0.400 0.600 0.000 -0.100]
+ [0.000 0.400 1.000 0.000 0.000 0.400]
+ [0.000 0.600 0.000 1.000 0.200 0.000]
+ [0.000 0.000 0.000 0.200 1.000 0.000]
+ [0.300 -0.100 0.400 0.000 0.000 1.000]
+```
+
+* Ahora, si representamos las relaciones de similaridad existentes en S como un grafo:
  
  ![Grafo Similaridad 1a iteración](https://github.com/alainray/recsys/blob/master/week1/pics/similarity_graph.PNG)
  
