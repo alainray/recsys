@@ -19,6 +19,7 @@ Para eso entra el tercer método que conjuga tanto la calidad de las evaluacione
 * Fácil de implementar y calcular.
 * Funciona bien en dominios con muchas evaluaciones.
 * Hace comparables ítems de pocas evaluaciones vs ítems con muchas evaluaciones.
+* Aunque haya un usuario nuevo del que no sepamos nada, podemos hacer recomendaciones de ítems.
 
 #### Problemas
 
@@ -28,3 +29,4 @@ Para eso entra el tercer método que conjuga tanto la calidad de las evaluacione
   * Aún así, sigue teniendo el problema de que no podemos evaluar de más de dos formas distintas los scores. Por ejemplo, ponderar cuadráticamente los negativos muy malos, linealmente los positivos/negativos normales y cuadráticamente los positivos muy buenos. 
 * Segundo problema, en dominios en que efectivamente haya muy pocos ratings por ítem, el Wilson Score puede no ser tan apropiado pues el intervalo de confianza inferior tendrá un valor muy bajo. 
   * Ahí probablemente es mejor simplemente utilizar cantidad de evaluaciones positivas versus negativas, pues el mero hecho de tener más evaluaciones ya nos dice algo relevante del item en un dominio así.
+*  El tercer problema -y que afecta a todos los métodos- es que no sabe qué hacer frente a un ítem nuevo. No puede decir nada al respecto.
