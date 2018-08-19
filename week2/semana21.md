@@ -13,22 +13,38 @@ La idea es que la matriz R de Ratings puede ser descompuesta en tres matrices U,
 
 Luego, si puedes conseguir las matrices U, S y V, la predicción consiste simplemente en ver la casilla R<sub>i,j</sub> después de multiplicarlas.
 
-La primera bondad del método es que la cantidad de factores latentes total es similar en cantidad al tamaño de filas y columnas. En los casos que nos interesan, estos puedes ser de cientos de miles o millones. Sin embargo, es poco probable que haya tal cantidad de factores relevantes a la hora de considerar el rating. Luego, el método consiste en generar una reducción de la dimensionalidad en los factores latentes llevándola al nivel de decenas o centenas. Luego, los vectores son proyectados a esta espacio de menor dimensionalidad y la predicción se convierte en la multiplicación de estas nuevas matrices U, S y V de menor dimensionalidad.
+La primera bondad del método es que la cantidad de factores latentes total es similar en cantidad al tamaño de filas y columnas. En los casos que nos interesan, éstos puedes ser de cientos de miles o millones. Sin embargo, es poco probable que haya tal cantidad de factores relevantes a la hora de considerar el rating. Luego, el método consiste en generar una reducción de la dimensionalidad en los factores latentes llevándola al nivel de decenas o centenas. Luego, los vectores son proyectados a esta espacio de menor dimensionalidad y la predicción se convierte en la multiplicación de estas nuevas matrices U, S y V de menor dimensionalidad. Como estamos reduciendo la dimensionalidad la reconstrucción de la matriz original no es perfecta.
 
-Esto vuelve el problema tratable, sin embargo, adolece de ciertos problemas:
+Sin embargo, esto último no es necesariamente malo: dado que al reducir dimensionalidad estamos quedándonos sólo con los factores más relevantes, tenderán a desaparecer el ruido de las predicciones asociados a conjuntos de factores latentes menos relevantes. Además se reforzará la importancia de los factores latentes de más peso, con lo que obtenemos predicciones más limpias.
 
-* Funciona mucho mejor cuando los valores desconocidos son pocos. Sin embargo, este no suele ser el caso y las matrices son sparse.
+Esto resuelve la predicción, sin embargo, adolece de ciertos problemas:
+
+* Funciona mucho mejor cuando los valores desconocidos son pocos. Sin embargo, este no suele ser el caso y las matrices son _sparse_.
 * El cálculo directo de la descomposición SVD es muy costoso.
 
-Se presenta un algoritmo mejor, que utiliza la noción de que la predicción de ratings es simplemente el producto punto entre un vector representativo del usuario y otro del ítem y la reducción de dimensionalidad.
+Se presenta un algoritmo mejor, que utiliza la noción de que la predicción de ratings es simplemente el producto punto entre un vector representativo del usuario y otro del ítem y la reducción de dimensionalidad. 
 
-Se transforma el problema de factorizar matrices a un problema de optimización, utilizando solamente los datos conocidos de ratings. Se trata de minimizar el RMSE 
+Se transforma el problema de factorizar matrices a un problema de optimización, utilizando solamente los datos conocidos de ratings. Se trata de minimizar la diferencia entre los ratings y el producto punto del vector representativo del usuario y del vector representativo del item. Además se le agregan ciertas términos para regularización, pero esto es menos importante.
+
+Esto es mucho más rápido que factorizar matrices y la predicción se transforma en multiplicar los vectores representativos que son solución del problema de optimización entre sí.
+
+Luego se habla de cómo extender el modelo para que soporte:
+
+* Sesgos de usuario o ítem
+* Confianza en la predicción.
+* Sesgos temporales.
+* Atributos del usuario (Demografía, género, etc.)
+* Más...
 
 #### Ventajas:
 
-* Rápido, simple.
-* Fácilmente extensible.
+* Rápido, simple de implementar.
+* Fácilmente extensible a nivel de modelación.
+  * Esto es lo que más me gusta de este algoritmo, permite desglosar la predicción de un rating de cuanta manera a uno se le pueda ocurrir.
+* Más preciso que métodos de Filtrado Colaborativo basado en Usuarios o Ítems.
 
 #### Desventajas
 * Difícil explicar cuáles son los criterios o factores latentes relevantes.
+  * Esto es probablemente lo peor del modelo, pues si bien me permite predecir fidedignamente evaluaciones, se vuelve difícil tomar decisiones proactivamente para mejorar mi oferta de productos, pues no es claro que se debe cambiar realmente.
 * No resuelve el problema del nuevo usuario o nuevo ítem.
+  * Al menos no con esta implementación.
