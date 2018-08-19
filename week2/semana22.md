@@ -24,7 +24,9 @@ Para esto se plantean dos ideas importantes:
     * En el modelo base, es modelada como una variable binaria, 1 si R<sub>i,j</sub> >= a un cierto umbral, 0 en otro caso.
     * Por supuesto, se puede modelar de formas más sofisticadas si es necesario.
 * Se plantea el mismo problema de optimización que para el modelo de Factorización de Matrices, ligeramente modificado:
+
 ![Fórmula Problema de Optimización IF-MF](https://github.com/alainray/recsys/blob/week-2/week2/pics/IF-MF-Formula.png)
+
 * La solución del problema de optimización no puede ser resuelta vía SGD dada la cantidad de variables.
   * A diferencia del caso de evaluaciones explícitas, la matriz de Ratings no puede ser considerada _sparse_.
   * Se utiliza un método parecido a ALS, en que se fija el valor de un set de variables - el vector de ítems o el de usuario - para simplificar el problema de optimización, para luego repetir el proceso con el otro set de variables.
