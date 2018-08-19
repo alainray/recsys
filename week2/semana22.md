@@ -10,14 +10,14 @@ La lectura introduce una modificación al algoritmo de Factorización de Matrice
 
 #### Características del Algoritmo
 
-Para esto se plantean dos ideas importantes:
+Para resolver esto se plantea que: 
 
 * El rating será considerado como la proporción del tiempo que fue visto/consumido el ítem.
   * Esto nos permitirá modelar la Confianza en la predicción y la Preferencia del ítem.
 * Se desglosará el rating es dos valores distintos:
   * La Confianza en la predicción.
     * Esto ataca el problema de la ambigûedad que se generará con los ratings de la matriz Anterior.
-    * Se modela como una función lineal en el rating: 1 + \alpha*r<sub>i,j</a>
+    * Se modela como una función lineal en el rating: 1 + alpha*r<sub>i,j</a>
     * Se puede modelar de otras maneras también.
   * La Preferencia por el ítem.
     * Esto será lo que queremos predecir.
@@ -26,7 +26,7 @@ Para esto se plantean dos ideas importantes:
 * Se plantea el mismo problema de optimización que para el modelo de Factorización de Matrices, ligeramente modificado:
 
 ![Fórmula Problema de Optimización IF-MF](https://github.com/alainray/recsys/blob/week-2/week2/pics/IF-MF-Formula.png)
-
+  * Nótese la inclusión del factor C<sub>i,j</sub>, lo discutiremos más adelante.
 * La solución del problema de optimización no puede ser resuelta vía SGD dada la cantidad de variables.
   * A diferencia del caso de evaluaciones explícitas, la matriz de Ratings no puede ser considerada _sparse_.
   * Se utiliza un método parecido a ALS, en que se fija el valor de un set de variables - el vector de ítems o el de usuario - para simplificar el problema de optimización, para luego repetir el proceso con el otro set de variables.
