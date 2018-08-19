@@ -51,5 +51,6 @@ Luego se habla de cómo extender el modelo para que soporte:
 * Difícil explicar cuáles son los criterios o factores latentes relevantes.
   * Esto es probablemente lo peor del modelo, pues si bien me permite predecir fidedignamente evaluaciones, se vuelve difícil tomar decisiones proactivamente para mejorar mi oferta de productos, pues no es claro que se debe cambiar realmente.
   * Sin embargo, por el poder de modelación que ofrece el método, es posible reducir esta incertidumbre al poder entender cómo cambian los ratings respecto a variables modeladas no directamente asociadas a los factores latentes.
+  * Si no, lo único que queda hacer es: por cada factor latente, clusterizar y ver qué items quedan ahí e interpretar.
 * No resuelve el problema del nuevo usuario o nuevo ítem.
   * Al menos no con esta implementación.
