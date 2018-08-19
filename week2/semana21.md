@@ -5,3 +5,30 @@
 #### Semana 2:  Collaborative Filtering for Implicit Feedback Datasets
 
 ### Discusión
+La lectura presenta el método de predicción de ratings de factorización de matrices, sus ventajas, debilidades y extensiones posibles para hacerlo más versátil.
+
+El método de factorización de matrices consiste en utilizar el método de SVD (Singular Value Decomposition) para generar predicciones de ratings para combinaciones de usuarios e items que no las tengan.
+
+La idea es que la matriz R de Ratings puede ser descompuesta en tres matrices U, S y V. La matriz U y V representarían proyecciones de los usuarios e items en un espacio distinto en que ciertas características latentes pero desconocidas explicarían los ratings de la matriz R. 
+
+Luego, si puedes conseguir las matrices U, S y V, la predicción consiste simplemente en ver la casilla R<sub>i,j</sub> después de multiplicarlas.
+
+La primera bondad del método es que la cantidad de factores latentes total es similar en cantidad al tamaño de filas y columnas. En los casos que nos interesan, estos puedes ser de cientos de miles o millones. Sin embargo, es poco probable que haya tal cantidad de factores relevantes a la hora de considerar el rating. Luego, el método consiste en generar una reducción de la dimensionalidad en los factores latentes llevándola al nivel de decenas o centenas. Luego, los vectores son proyectados a esta espacio de menor dimensionalidad y la predicción se convierte en la multiplicación de estas nuevas matrices U, S y V de menor dimensionalidad.
+
+Esto vuelve el problema tratable, sin embargo, adolece de ciertos problemas:
+
+* Funciona mucho mejor cuando los valores desconocidos son pocos. Sin embargo, este no suele ser el caso y las matrices son sparse.
+* El cálculo directo de la descomposición SVD es muy costoso.
+
+Se presenta un algoritmo mejor, que utiliza la noción de que la predicción de ratings es simplemente el producto punto entre un vector representativo del usuario y otro del ítem y la reducción de dimensionalidad.
+
+Se transforma el problema de factorizar matrices a un problema de optimización, utilizando solamente los datos conocidos de ratings. Se trata de minimizar el RMSE 
+
+#### Ventajas:
+
+* Rápido, simple.
+* Fácilmente extensible.
+
+#### Desventajas
+* Difícil explicar cuáles son los criterios o factores latentes relevantes.
+* No resuelve el problema del nuevo usuario o nuevo ítem.
