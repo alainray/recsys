@@ -17,7 +17,7 @@ Para esto se plantean dos ideas importantes:
 * Se desglosará el rating es dos valores distintos:
   * La Confianza en la predicción.
     * Esto ataca el problema de la ambigûedad que se generará con los ratings de la matriz Anterior.
-    * Se modela como una función lineal en el rating: 1 + alpha*r<sub>i,j</a>
+    * Se modela como una función lineal en el rating: 1 + \alpha*r<sub>i,j</a>
     * Se puede modelar de otras maneras también.
   * La Preferencia por el ítem.
     * Esto será lo que queremos predecir.
