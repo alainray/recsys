@@ -2,7 +2,7 @@
 ## Sistemas de Recomendación - IIC3633 - Blog - Alain Raymond
 ### 2do Semestre 2018
 
-#### Semana 2:  Collaborative Filtering for Implicit Feedback Datasets
+#### Semana 2: Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems
 
 ### Discusión
 La lectura presenta el método de predicción de ratings de factorización de matrices, sus ventajas, debilidades y extensiones posibles para hacerlo más versátil.
