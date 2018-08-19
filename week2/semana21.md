@@ -9,7 +9,7 @@ La lectura presenta el método de predicción de ratings de factorización de ma
 
 #### SVD
 
-El método de factorización de matrices consiste en utilizar el método de **SVD** (_Singular Value Decomposition_) para resolver el problema de predicción. A diferencia de los métodos de CF-UB o CF-IB, SVD de cierta manera ocupa la información de ambos al mismo tiempo.
+El método de factorización de matrices consiste en utilizar el método de **SVD** (_Singular Value Decomposition_) para resolver el problema de predicción. A diferencia de los métodos de UB-CF o IB-CF, SVD de cierta manera ocupa la información de ambos al mismo tiempo.
 
 La idea es que la matriz R de Ratings puede ser descompuesta en tres matrices U, S y V. La matriz U y V representarían proyecciones de los usuarios e items en un espacio distinto en que ciertas características latentes - pero desconocidas- de R, explicarían los ratings de la matriz R. 
 
