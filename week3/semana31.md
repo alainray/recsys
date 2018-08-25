@@ -26,7 +26,7 @@ Primero, se plantean los tipos de experimentos que se pueden efectuar con sistem
   * **Ventajas**:
      * Permite ver el comportamiento del usuario directamente frente a distintas configuraciones del recomendador.
   * **Desventajas**:
-     * Relativamente caro.
+     * Relativamente caro, pues debe ser implementado y puesto en producción.
      * Si algo sale mal, es posible que el recomendador disuada a los usuarios de consumir el producto o la herramienta asociada al producto.
 
 #### Propiedades de los sistemas de recomendación
@@ -49,3 +49,4 @@ A la vez, se plantean las distintas propiedades en que se puede enfocar un siste
 * **Adaptatividad**: cuánto puede modificar sus recomendaciones el sistema a cambios en el contexto importantes. Por ejemplo, sugerencias de noticias dado que sucedió algún evento.
 * **Escalabilidad**: cuánto rendimiento puede ofrecer el sistema en distintas métricas como throughput, cantidad de usuarios concurrentes, tiempos de respuesta, etc.
  
+ ### Comentarios
