@@ -11,4 +11,4 @@ A continuación se listan los blogs asignados a la lectura semanal del curso.
 
 #### * [Blog Semana 2: Collaborative Filtering for Implicit Feedback Datasets](https://github.com/alainray/recsys/blob/master/week2/semana22.md)
 
-#### * [Blog Semana 3: Collaborative Filtering for Implicit Feedback Datasets](https://github.com/alainray/recsys/blob/master/week3/semana31.md)
+#### * [Blog Semana 3: Shani, Guy, and Asela Gunawardana. “Evaluating recommendation systems.”](https://github.com/alainray/recsys/blob/master/week3/semana31.md)
