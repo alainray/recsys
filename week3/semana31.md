@@ -3,7 +3,7 @@
 
 #### Semana 3:  Shani, Guy, and Asela Gunawardana. “Evaluating recommendation systems.”
 
-### Discusión
+### Resumen
 
 La lectura trata sobre prácticas y consideraciones a la hora de evaluar sistemas de recomendaciones.
 #### Tipos de Experimento
@@ -50,3 +50,12 @@ A la vez, se plantean las distintas propiedades en que se puede enfocar un siste
 * **Escalabilidad**: cuánto rendimiento puede ofrecer el sistema en distintas métricas como throughput, cantidad de usuarios concurrentes, tiempos de respuesta, etc.
  
  ### Comentarios
+
+* El texto ofrece buenas y razonablemente concretas pautas para guiarse a la hora de medir un sistema de recomendación.
+  * En particular, me parece interesante ver todas las otras dimensiones a considerar más allá de la precisión.
+    * Esto me hace pensar que el mundo de los sistemas recomendadores tiene más cercanía con el mundo de las ciencias sociales (o al menos con teorías de comportamiento) que el resto del mundo de aprendizaje de máquina.
+  * Además, la descripción del proceso de experimentación a implementación me parece valiosa.
+    * El paso de Experimentos Offline durante una fase exploratorio, a Estudios de Usuario para ajustar (si tenemos los recursos) y finalmente cuando ya tenemos candidatos serios pasar a Experimentación Online, es sensato.
+* La *Serendipia* en particular parece una medida muy difícil de medir fiablemente. Menos aún de implementar en un sistema recomendador con algún nivel decente de rendimiento.
+* No sé si el criterio de Escalabilidad es algo propiamente de los sistemas recomendadores. Si bien entiendo que efectivamente puedes tomar decisiones respecto al rendimiento del recomendador para obtener mejor escalabilidad, me parece más una decisión técnica que del sistema de recomendación en sí.
+* Es terrible pensar que no hay sistema de recomendación que no sea susceptible a ataques. En particular, -dependiendo del costo que éstos impliquen- pueden significar una distorsión significativa de los resultados de los sistemas recomendadores, convirtiéndolos de herramientas útiles a simplemente sistemas encubiertos de publicidad o propaganda. Esto aniquila el propósito de que existan.
