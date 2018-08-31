@@ -28,7 +28,7 @@ Finalmente se habla de las limitaciones y posibles extensiones de estos sistemas
   * Más difícil transferir aprendizaje de un dominio a otro. Se debe hacer con más cuidado.
 * Este tipo de algoritmo parece tener más sentido cuando no es posible aplicar filtrado colaborativo.
   * Por ejemplo, si el sparsity es demasiado grande y no hay muchos vínculos entre distintos usuarios.
-* Naive Bayes me gusta porque permite enfrentar problemas de polisemia, que no he visto satisfactoriamente resueltos en otras implementaciones.
+* Naive Bayes me gusta porque permite enfrentar problemas de polisemia, que no he visto satisfactoriamente resueltos en otras implementaciones más recientes como Word2Vec.
 * En esta época sería apropiado incluir las redes neuronales profundas como algoritmo candidato para modelar usuarios o el contenido genéricamente.
   * Aunque tienen gran costo computacional, éste es de preprocesamiento. Luego el modelo aprendido es utilizable en línea.
     * El ejemplo que me parece canónico para esto sería el uso de Word2Vec para modelar la semántica de las palabras en los textos.
