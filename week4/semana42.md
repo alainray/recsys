@@ -22,7 +22,7 @@ Finalmente se habla de las limitaciones y posibles extensiones de estos sistemas
   * Sin embargo, ¿es trivial la generación de features o modelación de estos tipos de entrada? ¿Cómo se manejan los problemas de temporalidad, contexto y el aumento significativo en recursos necesarios para ejecutar estos algoritmos? El espacio de las palabras es probablemente más fácil de manejar que el de contenido multimedia.
    * Probablemente, el uso de algoritmos basados en contenido de manera on-line con contenido multimedia es un desafío importante.
 * Este tipo de algoritmos es malo para detectar atributos de los ítems que son fáciles de detectar para los usuarios. 
-  * El pareo con algoritmos de filtrado colaborativo es relevante.
+  * El pareo con algoritmos de filtrado colaborativo se vuelve relevante.
   * Quizás con la introducción de las redes profundas, este problema se pueda mitigar. Por ejemplo, detección de sentimientos que en su momento solo seres humanos podían hacer de forma decente.
 * La modelación es muy dependiente del ítem, a diferencia de los métodos de filtrado colaborativo donde uno se abstrae de eso.
   * Más difícil transferir aprendizaje de un dominio a otro. Se debe hacer con más cuidado.
