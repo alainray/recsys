@@ -13,7 +13,4 @@ A continuación se listan los blogs asignados a la lectura semanal del curso.
 
 #### * [Blog Semana 3: Shani, Guy, and Asela Gunawardana. “Evaluating recommendation systems.”](https://github.com/alainray/recsys/blob/master/week3/semana31.md)
 
-#### * [Blog Semana 4: Robin Burke. 2002. "Hybrid Recommender Systems: Survey and Experiments.”](https://github.com/alainray/recsys/blob/master/week4/semana41.md)
-
-
 #### * [Blog Semana 4: Pazzani, M. J., & Billsus, D. (2007). "Content-based recommendation systems.”](https://github.com/alainray/recsys/blob/master/week4/semana42.md)
